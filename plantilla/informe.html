@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe</title>
+    <style>
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.postimg.cc/RC2gDGwv/fondo2.png');
+             /* Aplica un efecto de desenfoque de 5px a la imagen de fondo */
+            z-index: -1; /* Asegura que el pseudo-elemento esté detrás de todos los elementos del cuerpo */
+            background-size: cover;
+            background-position: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .report-info {
+            margin-bottom: 20px;
+        }
+        .report-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .report-table th, .report-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button-container button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .button-container button img {
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        .fruit-image {
+            width: 50px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>    
+<body>
+    <div class="container">
+        <h1>Informe</h1>
+        <div class="report-info">
+            <p>Fecha: {{ fecha }}</p>
+        </div>
+        <form id="fechaForm">
+            <label for="fecha">Selecciona una fecha:</label>
+            <input type="date" id="fecha" name="fecha" value="{{ fecha }}">
+            
+            <button type="submit">Mostrar Informe</button>
+        </form>
+        <table class="report-table">
+            <thead>
+                <tr>
+                    <th>Fotos</th>
+                    <th>Item</th>
+                    <th>Conteo</th>
+                </tr>
+                
+                <tbody>
+                    {% for registro in registros %}
+                    <tr>
+                        
+                        <td><img class="fruit-image" src="https://5aldia.cl/wp-content/uploads/2021/11/maracuya.webp" alt="Maracuya"></a></td>
+                        <td>Maracuyá</td>
+                        <td>{{ registro[1] }}</td>
+                    </tr>
+                    <tr>
+                        
+                        <td><img class="fruit-image" src="https://exoticfruitbox.com/wp-content/uploads/2015/10/aguacate.jpg" alt="Aguacate"></a></td>
+                        <td>Aguacate</td>
+                        <td>{{ registro[3] }}</td>
+                    </tr>
+                    <tr>
+                        
+                        <td><img class="fruit-image" src="https://frutabona.com/wp/wp-content/uploads/2019/08/2-piathaya-roja.jpg" alt="Pitahaya"></a></td>
+                        <td>Pitahaya</td>
+                        <td>{{ registro[2] }}</td>
+                    </tr>
+                    <tr>
+                        
+                        <td><img class="fruit-image" src="https://lavaquita.co/cdn/shop/products/c6e77264-a4db-4f70-af17-ce84d0da417f_512x512.png?v=1622197586" alt="Tomate de Árbol"></a></td>
+                        <td>Tomate de Árbol</td>
+                        <td>{{ registro[4] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                
+        </table>
+        <div class="button-container">
+            <button onclick="window.location.href='/'"><img src="https://cdn-icons-png.flaticon.com/512/17/17699.png" alt="Regresar" height="25" width="25">Regresar</button>
+            <button onclick="window.print()">
+                <img src="https://cdn-icons-png.flaticon.com/512/3099/3099914.png" alt="Imprimir" width="25" height="25">
+                Imprimir
+            </button>
+            <button onclick="cerrarNavegador()">Cerrar</button>
+        </div>
+        <script>
+            document.getElementById('fechaForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Evita que se envíe el formulario automáticamente
+                var fechaSeleccionada = document.getElementById('fecha').value;
+                window.location.href = '/informe?fecha=' + fechaSeleccionada;
+            });
+        </script>
+        <script>
+            function cerrarNavegador() {
+                if (confirm("¿Estás seguro de que quieres cerrar el navegador?")) {
+                    // Cierra la ventana del navegador
+                    window.close();
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video en Vivo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow-y: hidden; /* Esto oculta la barra de desplazamiento vertical */
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.postimg.cc/GpTTBPSm/fondo3.png');
+            z-index: -1; 
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+           
+            
+            display: flex;
+            flex-wrap: wrap; /* Permite que los elementos se ajusten según el tamaño de la pantalla */
+            justify-content: space-between; /* Espacia los elementos uniformemente */
+            align-items: flex-start;
+            margin-top: 0;
+            
+        }
+
+        h1 {
+            width: 50%;
+            margin-top: 0;
+        }
+
+        .video-container,.table-container {
+            
+            /*width: 45%;
+            margin: 20px ;*/
+            width: 30%;
+            margin: 20px;
+            
+        }
+        .table-container{
+            width: 30%;
+            margin: 100px;
+            background-color: white;
+        }
+        
+
+        .video-container iframe {
+           width: 640px;
+           height: 482px;
+           
+        }
+
+        .button-container {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+        
+        .button-container button,
+        .button-container a {
+            background-color: #392cc7; 
+            color: white;
+            padding: 20px 36px;
+            font-size: 19px;
+            margin: 10px 0;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+            transition: box-shadow 0.3s ease-in-out; 
+            outline: none;
+            text-decoration: none;
+        }
+        
+        .button-container button:hover,
+        .button-container a:hover {
+            background-color: #2b2a38; /* Cambiar color de fondo al pasar el mouse */
+        }
+
+        .report-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .report-table th,
+    .report-table td {
+      text-align: center;
+      padding: 8px;
+      border: 1px solid #ddd;
+    }
+
+    .report-table th {
+      background-color: #f0f0f0;
+      font-weight: bold;
+    }
+
+    .fruit-image {
+      width: 30px;
+      height: 30px;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <div class="video-container">
+            <iframe src="{{ url_for('video_feed') }}" ></iframe>
+        </div>
+        <div class="table-container">
+            <table class="report-table">
+                <thead>
+                    <tr>
+                        <th>Fotos</th>
+                        <th>Item</th>
+                        <th>Conteo</th>
+                    </tr>
+                    
+                    <tbody>
+                        {% for registro in registros %}
+                        <tr>
+                            
+                            <td><img class="fruit-image" width="30" height="30" src="https://5aldia.cl/wp-content/uploads/2021/11/maracuya.webp" alt="Maracuya"></a></td>
+                            <td>Maracuyá</td>
+                            <td>{{ registro[1] }}</td>
+                        </tr>
+                        <tr>
+                            
+                            <td><img class="fruit-image" width="30" height="30" src="https://exoticfruitbox.com/wp-content/uploads/2015/10/aguacate.jpg" alt="Aguacate"></a></td>
+                            <td>Aguacate</td>
+                            <td>{{ registro[3] }}</td>
+                        </tr>
+                        <tr>
+                            
+                            <td><img class="fruit-image" width="30" height="30" src="https://frutabona.com/wp/wp-content/uploads/2019/08/2-piathaya-roja.jpg" alt="Pitahaya"></a></td>
+                            <td>Pitahaya</td>
+                            <td>{{ registro[2] }}</td>
+                        </tr>
+                        <tr>
+                            
+                            <td><img class="fruit-image" width="30" height="30" src="https://lavaquita.co/cdn/shop/products/c6e77264-a4db-4f70-af17-ce84d0da417f_512x512.png?v=1622197586" alt="Tomate de Árbol"></a></td>
+                            <td>Tomate de Árbol</td>
+                            <td>{{ registro[4] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    
+            </table>
+        </div>
+        <div class="button-container"> 
+            <button onclick="redirigir_informe()">Informe</button>
+            <button onclick="cerrarNavegador()">Cerrar</button>
+            
+        </div>
+    </div>
+    
+
+    <script>
+        function redirigir_informe() {
+            // Redirigir al usuario a la página de informe
+            window.location.href = "{{ url_for('informe') }}";
+        }
+    </script>
+    <script>
+        function cerrarNavegador() {
+            if (confirm("¿Estás seguro de que quieres cerrar el navegador?")) {
+                // Cierra la ventana del navegador
+                window.close();
+            }
+        }
+    </script>
+    
+   
+
+
+</body>
+</html>

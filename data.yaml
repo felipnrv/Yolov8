@@ -1,0 +1,16 @@
+
+path: /content/drive/MyDrive/FotosFrutasYOLO/
+
+train: train/images
+val: valid/images
+test: test/images
+
+nc: 4
+names: ['aguacate', 'maracuya', 'pitahaya', 'tomatearbol']
+
+roboflow:
+  workspace: proyecto-detec-frutas
+  project: frutas_2.0
+  version: 6
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/proyecto-detec-frutas/frutas_2.0/dataset/6
