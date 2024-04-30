@@ -9,6 +9,9 @@ import sqlite3 as sql
 import pyrebase
 from flask import Flask,render_template,Response,request,redirect,url_for,session 
 import datetime as dt
+import matplotlib.pyplot as plt
+import io
+import base64
 
 key=os.urandom(12)
 app = Flask(__name__,template_folder='plantilla') #se inicializa la aplicacion
@@ -161,6 +164,29 @@ def main():
                 print('Pitahaya', pitahaya_out)
             if tomatearbol_out != 0:
                 print('Tomatearbol', tomatearbol_out)
+
+            aguacate_out=30
+            maracuya_out=24
+            pitahaya_out=15
+            tomatearbol_out=28
+
+            frutas = {'Aguacate':aguacate_out,
+                      'Maracuya':maracuya_out,
+                      'Pitahaya':pitahaya_out,
+                      'Tomate de arbol':tomatearbol_out}
+            
+            frutas = {fruta: cantidad for fruta, cantidad in frutas.items() if cantidad != 0 }
+
+            colores=['green','yellow','pink','red']
+
+            plt.bar(frutas.keys(),frutas.values(),color=colores)
+
+            plt.title('Cantidad de frutas')
+            plt.xlabel('Frutas')
+            plt.ylabel('Cantidad')
+
+            plt.savefig('./static/grafico_frutas.png')
+                
 
             db.child(fecha_db).child(hora_db).update(
                 {"Aguacate": aguacate_out,
@@ -344,7 +370,17 @@ def informe():
     # Cierra la conexión con la base de datos
     connection.close()
 
+    frutas = [registro[0] for registro in registros]
+    conteos = [registro[1] for registro in registros]
+
+    # Crear el gráfico de barras
+   
+
+    # Guardar el gráfico en un buffer de memoria
+    
+
     return render_template('informe.html',registros=registros,fecha=fecha_seleccion)
+
 
 
 if __name__ == "__main__":

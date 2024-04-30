@@ -18,5 +18,5 @@ hora_db = dt.datetime.now().strftime('%H:%M')
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 
-users=db.child(fecha_db).get()
-print(users.val())
+users=db.child(fecha_db).get().val()
+print(users)
