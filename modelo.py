@@ -166,7 +166,7 @@ def main():
                 print('Tomatearbol', tomatearbol_out)
 
             aguacate_out=30
-            maracuya_out=24
+            
             pitahaya_out=15
             tomatearbol_out=28
 

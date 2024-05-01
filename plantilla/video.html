@@ -126,44 +126,7 @@
             <iframe src="{{ url_for('video_feed') }}" ></iframe>
         </div>
         <div class="table-container">
-            <table class="report-table">
-                <thead>
-                    <tr>
-                        <th>Fotos</th>
-                        <th>Item</th>
-                        <th>Conteo</th>
-                    </tr>
-                    
-                    <tbody>
-                        {% for registro in registros %}
-                        <tr>
-                            
-                            <td><img class="fruit-image" width="30" height="30" src="https://5aldia.cl/wp-content/uploads/2021/11/maracuya.webp" alt="Maracuya"></a></td>
-                            <td>Maracuyá</td>
-                            <td>{{ registro[1] }}</td>
-                        </tr>
-                        <tr>
-                            
-                            <td><img class="fruit-image" width="30" height="30" src="https://exoticfruitbox.com/wp-content/uploads/2015/10/aguacate.jpg" alt="Aguacate"></a></td>
-                            <td>Aguacate</td>
-                            <td>{{ registro[3] }}</td>
-                        </tr>
-                        <tr>
-                            
-                            <td><img class="fruit-image" width="30" height="30" src="https://frutabona.com/wp/wp-content/uploads/2019/08/2-piathaya-roja.jpg" alt="Pitahaya"></a></td>
-                            <td>Pitahaya</td>
-                            <td>{{ registro[2] }}</td>
-                        </tr>
-                        <tr>
-                            
-                            <td><img class="fruit-image" width="30" height="30" src="https://lavaquita.co/cdn/shop/products/c6e77264-a4db-4f70-af17-ce84d0da417f_512x512.png?v=1622197586" alt="Tomate de Árbol"></a></td>
-                            <td>Tomate de Árbol</td>
-                            <td>{{ registro[4] }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                    
-            </table>
+           
         </div>
         <div class="button-container"> 
             <button onclick="redirigir_informe()">Informe</button>
