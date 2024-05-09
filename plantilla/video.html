@@ -8,11 +8,8 @@
         body {
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
             overflow-y: hidden; /* Esto oculta la barra de desplazamiento vertical */
         }
         body::before {
@@ -22,7 +19,6 @@
             left: 0;
             width: 100%;
             height: 100%;
-            
             background-image: url('https://i.postimg.cc/GpTTBPSm/fondo3.png');
             z-index: -1; 
             background-size: cover;
@@ -30,40 +26,35 @@
         }
 
         .container {
-           
-            
-            display: flex;
-            flex-wrap: wrap; /* Permite que los elementos se ajusten según el tamaño de la pantalla */
-            justify-content: space-between; /* Espacia los elementos uniformemente */
-            align-items: flex-start;
-            margin-top: 0;
-            
+            max-width: 640px;
+            max-height: 480px;/*esto hace que el contenedor sea mas grande*/
+            margin: auto;
+            padding: auto;/*esto hace que el contenedor sea mas grande*/
         }
 
         h1 {
-            width: 50%;
-            margin-top: 0;
+            text-align: center;
+            color: #333;
         }
 
-        .video-container,.table-container {
-            
-            /*width: 45%;
-            margin: 20px ;*/
-            width: 30%;
-            margin: 20px;
-            
+        .video-container {
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            padding-bottom: 75%;
+            overflow: hidden;
+            margin-top: 20px;
         }
-        .table-container{
-            width: 30%;
-            margin: 100px;
-            background-color: white;
-        }
-        
 
         .video-container iframe {
-           width: 640px;
-           height: 482px;
-           
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 4px;
         }
 
         .button-container {
@@ -95,38 +86,13 @@
             background-color: #2b2a38; /* Cambiar color de fondo al pasar el mouse */
         }
 
-        .report-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .report-table th,
-    .report-table td {
-      text-align: center;
-      padding: 8px;
-      border: 1px solid #ddd;
-    }
-
-    .report-table th {
-      background-color: #f0f0f0;
-      font-weight: bold;
-    }
-
-    .fruit-image {
-      width: 30px;
-      height: 30px;
-    }
-
     </style>
 </head>
 <body>
     <div class="container">
-        
+        <h1>Video en Vivo</h1>
         <div class="video-container">
             <iframe src="{{ url_for('video_feed') }}" ></iframe>
-        </div>
-        <div class="table-container">
-           
         </div>
         <div class="button-container"> 
             <button onclick="redirigir_informe()">Informe</button>
@@ -135,6 +101,7 @@
         </div>
     </div>
     
+
     <script>
         function redirigir_informe() {
             // Redirigir al usuario a la página de informe
