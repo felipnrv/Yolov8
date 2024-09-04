@@ -14,7 +14,7 @@ El sistema simula una cinta transportadora en constante movimiento, donde las fr
 
 El modelo fue entrenado con 1000 imágenes de cada fruta, considerando variaciones de ángulo, iluminación y posición, lo que mejora su precisión y evita sobreajustes. Para resaltar las características de las frutas, se utilizó un fondo blanco, lo que facilita la detección de color, forma y tamaño. Además, se desarrolló una página web para que cualquier usuario pueda acceder al sistema sin necesidad de conocimientos técnicos. La interfaz muestra el video en vivo y un contador de las frutas que atraviesan la línea de detección, proporcionando un control preciso del conteo.
 
-<a href='https://postimg.cc/fVqtvYH9' target='_blank'><img src='https://i.postimg.cc/CKSGSNkm/val-batch2-labels-2.jpg' border='0' alt='val-batch2-labels-2' width=300/></a>
+<a href='https://postimg.cc/fVqtvYH9' target='_blank'><img src='https://i.postimg.cc/CKSGSNkm/val-batch2-labels-2.jpg' border='0' alt='val-batch2-labels-2' width=900/></a>
 
 El sistema también incluye estadísticas detalladas, con el total de cada producto, fechas y la opción de descargar informes. Toda la información se almacena en una base de datos local, lo que asegura el funcionamiento incluso sin conexión a internet. Si hay acceso a internet, los datos se replican en una base de datos en la nube, garantizando la seguridad de la información y permitiendo su análisis.
 
